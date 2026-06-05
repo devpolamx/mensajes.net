@@ -1,0 +1,6 @@
+{
+  "name": "Mensajes.net",
+  "description": "Firma estratégica de comunicación, percepción pública e influencia de alto nivel. Inteligencia en Comunicación.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
