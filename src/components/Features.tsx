@@ -80,19 +80,22 @@ export default function Features({ onSelectService }: FeaturesProps) {
                 key={srv.id}
                 id={`card-pivotal-service-${srv.id}`}
                 onClick={() => onSelectService(srv.id)}
-                className={`group relative overflow-hidden rounded bg-white/70 dark:bg-zinc-950/80 p-8 border border-zinc-200 dark:border-zinc-900 hover:border-cyan-500/40 dark:hover:border-cyan-500/30 hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col justify-between backdrop-blur-sm ${
+                className={`group relative overflow-hidden rounded bg-white/70 dark:bg-zinc-950/80 p-8 border border-zinc-200 dark:border-zinc-900 hover:border-cyan-500/40 dark:hover:border-cyan-500/30 hover:shadow-[0_10px_35px_-10px_rgba(6,182,212,0.18)] dark:hover:shadow-[0_10px_35px_-10px_rgba(6,182,212,0.12)] hover:-translate-y-1 hover:scale-[1.02] transition-all duration-500 ease-out cursor-pointer flex flex-col justify-between backdrop-blur-sm ${
                   isLargeCell ? 'md:col-span-1 lg:col-span-1' : ''
                 }`}
               >
+                {/* Background glow hover effect */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded" />
+
                 {/* Subtle digital numbering on corners */}
                 <span className="absolute top-4 right-6 font-mono text-[10px] text-zinc-400 dark:text-zinc-700 tracking-wider font-semibold">
                   MÓD_0{index + 1}
                 </span>
 
-                <div>
+                <div className="relative z-10">
                   {/* Glowing Icon Hub */}
-                  <div className="inline-flex p-3 rounded bg-zinc-100 dark:bg-zinc-900 border border-zinc-250 dark:border-zinc-800 text-cyan-600 dark:text-cyan-400 group-hover:text-cyan-500 dark:group-hover:text-cyan-300 group-hover:border-cyan-500/20 group-hover:box-glow transition-all duration-300 mb-6">
-                    {renderIcon(srv.iconName, "w-6 h-6")}
+                  <div className="inline-flex p-3 rounded bg-zinc-100 dark:bg-zinc-900 border border-zinc-250 dark:border-zinc-800 text-cyan-600 dark:text-cyan-400 group-hover:text-cyan-500 dark:group-hover:text-cyan-300 group-hover:border-cyan-500/35 group-hover:box-glow transition-all duration-500 mb-6">
+                    {renderIcon(srv.iconName, "w-6 h-6 transition-transform duration-500 group-hover:scale-110")}
                   </div>
 
                   <h3 className="font-display font-bold text-xl text-zinc-900 dark:text-white group-hover:text-cyan-650 dark:group-hover:text-cyan-400 transition-colors duration-300">
@@ -105,7 +108,7 @@ export default function Features({ onSelectService }: FeaturesProps) {
                 </div>
 
                 {/* Micro indicator footer */}
-                <div className="mt-8 pt-4 border-t border-zinc-200 dark:border-zinc-900/40 flex items-center justify-between text-xs font-mono text-zinc-500 dark:text-zinc-500 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
+                <div className="relative z-10 mt-8 pt-4 border-t border-zinc-200 dark:border-zinc-900/40 flex items-center justify-between text-xs font-mono text-zinc-500 dark:text-zinc-500 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors duration-300">
                   <span className="uppercase tracking-wider">Ver Ingeniería</span>
                   <Icons.ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>

@@ -12,14 +12,12 @@ import AboutSection from './components/AboutSection';
 import ServicesDetail from './components/ServicesDetail';
 import InsightsSection from './components/InsightsSection';
 import ContactSection from './components/ContactSection';
-import SEOInspector from './components/SEOInspector';
 import Footer from './components/Footer';
 import { Terminal, Shield, Eye, FileCode, CheckCircle2 } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('inicio');
   const [preselectedServiceId, setPreselectedServiceId] = useState<string>('inteligencia-estrategica');
-  const [showDevConsole, setShowDevConsole] = useState<boolean>(true);
   
   // Theme selection: default dark true, persisted to localStorage
   const [isDark, setIsDark] = useState<boolean>(() => {
@@ -146,45 +144,6 @@ export default function App() {
         )}
 
       </main>
-
-      {/* 3. COLLAPSIBLE STATIC ASTRO / SEO INTEGRATION BAR */}
-      <section 
-        id="developer-integration-helper-dock"
-        className="bg-zinc-950 border-t border-zinc-900 py-4 px-6 sm:px-8 select-none"
-      >
-        <div className="mx-auto max-w-7xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded bg-cyan-950/40 text-cyan-400 border border-cyan-900/40 shrink-0">
-              <Terminal className="w-4 h-4" />
-            </div>
-            <div>
-              <p className="text-xs font-mono font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
-                Consola de Integración Estática (Astro / SEO / Hugo Emulación)
-                <span className="text-[9px] bg-cyan-950 text-cyan-400 px-1.5 py-0.5 rounded border border-cyan-900/30 font-mono">
-                  COMPATIBLE HOSTING COMPARTIDO
-                </span>
-              </p>
-              <p className="text-[10px] text-zinc-500 font-sans mt-0.5">
-                Haga clic para expandir o contraer plantillas estáticas de sitemap.xml, robots.txt y encabezados Open Graph.
-              </p>
-            </div>
-          </div>
-
-          <button
-            onClick={() => setShowDevConsole(!showDevConsole)}
-            className="w-full sm:w-auto relative cursor-pointer inline-flex items-center justify-center rounded border border-zinc-800 bg-zinc-900 px-4 py-2 text-[10px] font-mono tracking-wider uppercase text-zinc-300 hover:bg-zinc-950 focus:outline-none"
-          >
-            {showDevConsole ? "Ocultar Consola Técnica" : "Ver Consola y Sitemap"}
-          </button>
-        </div>
-      </section>
-
-      {/* Show SEO/Astro inspector if enabled by developer bar */}
-      {showDevConsole && (
-        <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
-          <SEOInspector />
-        </div>
-      )}
 
       {/* 4. Executive Footer Panel */}
       <Footer onNavigate={handleNavigate} />

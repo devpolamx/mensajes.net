@@ -3,11 +3,17 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import * as Icons from 'lucide-react';
 import { VALUES } from '../data';
+import businessImg from '../assets/images/business.jpg';
 
 export default function AboutSection() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   
   const renderIcon = (iconName: string, className = "w-6 h-6 text-cyan-400") => {
     const LucideIcon = (Icons as any)[iconName];
@@ -28,20 +34,32 @@ export default function AboutSection() {
 
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         
-        {/* Title Block Section */}
-        <div className="max-w-3xl border-b border-zinc-200/50 dark:border-zinc-900 pb-12 mb-16">
-          <span className="font-mono text-[10px] tracking-widest text-cyan-600 dark:text-cyan-400 uppercase font-semibold">
-            Confidencialidad y Estructura
-          </span>
-          <h1 
-            id="about-main-title"
-            className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-zinc-950 dark:text-white mt-4 tracking-tight leading-tight"
-          >
-            Construimos percepción estratégica de alto calibre.
-          </h1>
-          <p className="font-sans text-zinc-650 dark:text-zinc-400 text-sm sm:text-base mt-4 leading-relaxed max-w-xl transition-colors">
-            Socio estratégico indispensable para juntas de gobierno corporativo, secretarios de Estado, comités presidenciales e inversionistas globales de alta jerarquía.
-          </p>
+        {/* Title Block Section split grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-b border-zinc-200/50 dark:border-zinc-900 pb-12 mb-16">
+          <div className="lg:col-span-7">
+            <span className="font-mono text-[10px] tracking-widest text-cyan-600 dark:text-cyan-400 uppercase font-semibold">
+              Confidencialidad y Estructura
+            </span>
+            <h1 
+              id="about-main-title"
+              className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-zinc-950 dark:text-white mt-4 tracking-tight leading-tight"
+            >
+              Construimos percepción estratégica de alto calibre.
+            </h1>
+            <p className="font-sans text-zinc-650 dark:text-zinc-400 text-sm sm:text-base mt-4 leading-relaxed max-w-xl transition-colors">
+              Socio estratégico indispensable para juntas de gobierno corporativo, secretarios de Estado, comités presidenciales e inversionistas globales de alta jerarquía.
+            </p>
+          </div>
+          <div className="lg:col-span-5 relative select-none w-full h-full flex items-center justify-end">
+            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg">
+              <img 
+                src={businessImg} 
+                alt="Perspectiva de Negocios Corporativos" 
+                className="w-full h-full object-cover object-center opacity-70 dark:opacity-80 transition-opacity duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-white via-white/20 to-transparent dark:from-[#030303] dark:via-[#030303]/25 dark:to-transparent transition-colors duration-500" />
+            </div>
+          </div>
         </div>
 
         {/* Narrative Split Block */}
@@ -108,23 +126,33 @@ export default function AboutSection() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {VALUES.map((val) => (
+            {VALUES.map((val, index) => (
               <div 
                 key={val.id}
                 id={`card-value-${val.id}`}
-                className="bg-white/70 dark:bg-zinc-950/60 p-6 rounded border border-zinc-200 dark:border-zinc-900 hover:border-cyan-500/20 dark:hover:border-cyan-500/10 hover:bg-[#fafafa]/90 dark:hover:bg-zinc-950/80 transition-all duration-300 backdrop-blur-sm shadow-sm"
+                style={{ transitionDelay: `${index * 150}ms` }}
+                className={`group relative overflow-hidden p-6 rounded border transition-all duration-500 ease-out transform shadow-sm ${
+                  mounted 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-4'
+                } bg-white/70 dark:bg-zinc-950/60 border-zinc-200 dark:border-zinc-900 hover:border-cyan-500/40 dark:hover:border-cyan-500/30 hover:shadow-[0_10px_35px_-10px_rgba(6,182,212,0.18)] dark:hover:shadow-[0_10px_35px_-10px_rgba(6,182,212,0.12)] hover:-translate-y-1 hover:scale-[1.03] hover:bg-[#fafafa]/90 dark:hover:bg-zinc-950/80 backdrop-blur-sm`}
               >
-                <div className="mb-4 inline-flex p-2.5 rounded bg-zinc-100 dark:bg-zinc-900 border border-zinc-250 dark:border-zinc-800 text-cyan-600 dark:text-cyan-400">
-                  {renderIcon(val.iconName, "w-5 h-5")}
+                {/* Background glow hover effect */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded" />
+
+                <div className="relative z-10 mb-4 inline-flex p-2.5 rounded bg-zinc-100 dark:bg-zinc-900 border border-zinc-250 dark:border-zinc-800 text-cyan-600 dark:text-cyan-400 group-hover:text-cyan-500 dark:group-hover:text-cyan-300 group-hover:border-cyan-500/35 group-hover:box-glow transition-all duration-500">
+                  {renderIcon(val.iconName, "w-5 h-5 transition-transform duration-500 group-hover:scale-110")}
                 </div>
                 
-                <h3 className="font-display font-bold text-base text-zinc-900 dark:text-white">
-                  {val.title}
-                </h3>
-                
-                <p className="mt-3 text-[11px] sm:text-xs text-zinc-650 dark:text-zinc-400 leading-relaxed font-sans">
-                  {val.description}
-                </p>
+                <div className="relative z-10">
+                  <h3 className="font-display font-bold text-base text-zinc-900 dark:text-white group-hover:text-cyan-650 dark:group-hover:text-cyan-400 transition-colors duration-300">
+                    {val.title}
+                  </h3>
+                  
+                  <p className="mt-3 text-[11px] sm:text-xs text-zinc-650 dark:text-zinc-400 leading-relaxed font-sans">
+                    {val.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

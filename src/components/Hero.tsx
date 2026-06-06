@@ -3,22 +3,71 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
-import { ArrowRight, ShieldCheck, Database, Landmark, Briefcase, Eye } from 'lucide-react';
-
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, ShieldCheck, Database, Landmark, Briefcase, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
+//import heroDeaner from '../assets/images/hero-deaner.jpg';
+import heroForerunner from '../assets/images/hero-forerunner.jpg';
+//import herovitality from '../assets/images/hero-vitaly-gariev.jpg';
+import herobusinessintelligence from '../assets/images/hero-business-intellisense.jpg';
 interface HeroProps {
   onLearnMoreServices: () => void;
   onRequestDiagnostic: () => void;
 }
 
+function AnimatedNumber({ value, decimals = 0 }: { value: number; decimals?: number }) {
+  const [current, setCurrent] = useState(0);
+  useEffect(() => {
+    let startTimestamp: number | null = null;
+    let animationFrameId: number;
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / 1500, 1); // 1.5s
+      setCurrent(progress * value);
+      if (progress < 1) {
+        animationFrameId = window.requestAnimationFrame(step);
+      }
+    };
+    animationFrameId = window.requestAnimationFrame(step);
+    return () => window.cancelAnimationFrame(animationFrameId);
+  }, [value]);
+  return <span>{current.toFixed(decimals)}</span>;
+}
+
 export default function Hero({ onLearnMoreServices, onRequestDiagnostic }: HeroProps) {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev === 0 ? 1 : 0));
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
   return (
-    <section 
+    <section
       id="hero-executive-section"
-      className="relative overflow-hidden bg-transparent py-20 lg:py-32 border-b border-zinc-200/50 dark:border-zinc-950 transition-colors duration-500"
+      className="relative overflow-hidden py-20 lg:py-32 border-b border-zinc-200/50 dark:border-zinc-900 transition-colors duration-2000 min-h-[75vh] flex items-center bg-transparent"
     >
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 relative z-10">
-        
+      {/* Background Slideshow */}
+      <div className="absolute inset-0 z-0 select-none">
+        {/* Slide 1 */}
+        <div
+          className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-20 dark:opacity-25 scale-100' : 'opacity-0 scale-105'
+            }`}
+          style={{ backgroundImage: `url(${heroForerunner})` }}
+        />
+        {/* Slide 2 */}
+        <div
+          className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out ${currentSlide === 1 ? 'opacity- 20 dark:opacity-25 scale-100' : 'opacity-0 scale-105'
+            }`}
+          style={{ backgroundImage: `url(${herobusinessintelligence})` }}
+        />
+
+        {/* Vignette Gradients & Blur Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/60 to-white/80 dark:from-[#030303]/85 dark:via-black/65 dark:to-[#030303]/85 transition-colors duration-500" />
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 relative z-10 w-full">
+
         {/* Confidenciality Header Badge */}
         <div className="flex justify-center mb-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-950/20 px-4 py-1.5 font-mono text-[10px] tracking-widest text-[#0ea5e9] dark:text-cyan-400 uppercase select-none">
@@ -29,7 +78,7 @@ export default function Hero({ onLearnMoreServices, onRequestDiagnostic }: HeroP
 
         {/* Content Main Headline */}
         <div className="max-w-4xl mx-auto text-center">
-          <h1 
+          <h1
             id="hero-main-title"
             className="font-display text-4xl font-extrabold tracking-tight text-zinc-950 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] sm:leading-none"
           >
@@ -39,7 +88,7 @@ export default function Hero({ onLearnMoreServices, onRequestDiagnostic }: HeroP
             </span>
           </h1>
 
-          <p 
+          <p
             id="hero-subtitle"
             className="mt-8 text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-400 font-sans max-w-2xl mx-auto leading-relaxed transition-colors duration-500"
           >
@@ -68,7 +117,7 @@ export default function Hero({ onLearnMoreServices, onRequestDiagnostic }: HeroP
         </div>
 
         {/* Strategic Target Sectors Grid Indicators */}
-        <div 
+        <div
           id="hero-target-sectors"
           className="mt-20 lg:mt-28 grid grid-cols-1 md:grid-cols-3 gap-6"
         >
@@ -110,44 +159,52 @@ export default function Hero({ onLearnMoreServices, onRequestDiagnostic }: HeroP
         </div>
 
         {/* Sophisticated Performance Stats Panel */}
-        <div 
+        <div
           id="hero-stats-panel"
-          className="mt-16 rounded border border-zinc-200 dark:border-zinc-900 bg-white/60 dark:bg-black/50 p-8 sm:p-10 select-none relative overflow-hidden backdrop-blur-sm transition-colors duration-500"
+          className="mt-16 rounded border border-zinc-200 dark:border-zinc-900 bg-white/60 dark:bg-black/50 p-8 sm:p-10 select-none relative overflow-hidden backdrop-blur-sm shadow-sm transition-all duration-500 ease-out hover:scale-[1.01] hover:border-cyan-500/20 hover:shadow-[0_10px_40px_-15px_rgba(6,182,212,0.15)] group/panel"
         >
           {/* Subtle light pulse line inside */}
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
-          
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent group-hover/panel:via-cyan-500 transition-all duration-500" />
+
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y lg:divide-y-0 lg:divide-x divide-zinc-200 dark:divide-zinc-900">
-            <div className="pt-4 lg:pt-0">
-              <p className="font-mono text-cyan-600 dark:text-cyan-400 font-medium text-xs tracking-widest uppercase mb-1 flex items-center justify-center gap-1">
+            <div className="pt-4 lg:pt-0 group/stat">
+              <p className="font-mono text-cyan-600 dark:text-cyan-400 font-medium text-xs tracking-widest uppercase mb-1 flex items-center justify-center gap-1 transition-colors duration-300 group-hover/stat:text-cyan-500">
                 <span className="w-2 h-2 rounded-full bg-cyan-500 inline-block animate-pulse" />
                 Precisión Operativa
               </p>
-              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-zinc-950 dark:text-white">99.4%</h2>
+              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-zinc-950 dark:text-white transition-all duration-300 group-hover/stat:scale-105 group-hover/stat:text-glow">
+                <AnimatedNumber value={99.4} decimals={1} />%
+              </h2>
               <p className="text-xs text-zinc-550 dark:text-zinc-500 mt-2 font-sans">Alineación en matrices de opinión</p>
             </div>
 
-            <div className="pt-4 lg:pt-0 lg:pl-4">
-              <p className="font-mono text-teal-600 dark:text-teal-400 font-medium text-xs tracking-widest uppercase mb-1">
+            <div className="pt-4 lg:pt-0 lg:pl-4 group/stat">
+              <p className="font-mono text-teal-600 dark:text-teal-400 font-medium text-xs tracking-widest uppercase mb-1 transition-colors duration-300 group-hover/stat:text-teal-500">
                 Pauta Dirigida
               </p>
-              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-zinc-950 dark:text-white">84%</h2>
+              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-zinc-950 dark:text-white transition-all duration-300 group-hover/stat:scale-105 group-hover/stat:text-glow">
+                <AnimatedNumber value={84} />%
+              </h2>
               <p className="text-xs text-zinc-550 dark:text-zinc-500 mt-2 font-sans">Eficiencia en impacto a decisores</p>
             </div>
 
-            <div className="pt-6 lg:pt-0 lg:pl-4">
-              <p className="font-mono text-blue-600 dark:text-blue-400 font-medium text-xs tracking-widest uppercase mb-1">
+            <div className="pt-6 lg:pt-0 lg:pl-4 group/stat">
+              <p className="font-mono text-blue-600 dark:text-blue-400 font-medium text-xs tracking-widest uppercase mb-1 transition-colors duration-300 group-hover/stat:text-blue-500">
                 War Rooms Liderados
               </p>
-              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-zinc-950 dark:text-white">42+</h2>
+              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-zinc-950 dark:text-white transition-all duration-300 group-hover/stat:scale-105 group-hover/stat:text-glow">
+                <AnimatedNumber value={42} />+
+              </h2>
               <p className="text-xs text-zinc-550 dark:text-zinc-500 mt-2 font-sans">Contenciones de crisis de alto impacto</p>
             </div>
 
-            <div className="pt-6 lg:pt-0 lg:pl-4">
-              <p className="font-mono text-purple-600 dark:text-purple-400 font-medium text-xs tracking-widest uppercase mb-1">
+            <div className="pt-6 lg:pt-0 lg:pl-4 group/stat">
+              <p className="font-mono text-purple-600 dark:text-purple-400 font-medium text-xs tracking-widest uppercase mb-1 transition-colors duration-300 group-hover/stat:text-purple-500">
                 Influencia Blindada
               </p>
-              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-zinc-950 dark:text-white">100%</h2>
+              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-zinc-950 dark:text-white transition-all duration-300 group-hover/stat:scale-105 group-hover/stat:text-glow">
+                <AnimatedNumber value={100} />%
+              </h2>
               <p className="text-xs text-zinc-550 dark:text-zinc-500 mt-2 font-sans">Garantía de confidencialidad institucional</p>
             </div>
           </div>

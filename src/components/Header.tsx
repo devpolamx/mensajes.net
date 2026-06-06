@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { Menu, X, ArrowUpRight, Shield, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import BrandLogo from './BrandLogo';
 
 interface HeaderProps {
@@ -68,7 +68,7 @@ export default function Header({ activeSection, setActiveSection, isDark, onTogg
           })}
         </nav>
 
-        {/* CTA Elite Button & Theme Selection Controls */}
+        {/* Theme Selection Controls */}
         <div className="hidden md:flex items-center gap-4">
           {/* Subtle elegant theme selector */}
           <button
@@ -82,20 +82,6 @@ export default function Header({ activeSection, setActiveSection, isDark, onTogg
             ) : (
               <Moon className="w-4.5 h-4.5 transition-transform group-hover:-rotate-12" />
             )}
-          </button>
-
-          <span className="hidden lg:flex items-center gap-1.5 font-mono text-[10px] tracking-wider text-zinc-500 dark:text-zinc-400 uppercase bg-zinc-100 dark:bg-zinc-900 px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800">
-            <Shield className="w-3.5 h-3.5 text-cyan-500" />
-            Canal Encriptado SSL
-          </span>
-          
-          <button
-            id="header-cta-diagnostic"
-            onClick={() => handleNavClick('contacto')}
-            className="group relative inline-flex items-center justify-center overflow-hidden rounded bg-cyan-50 dark:bg-cyan-900/40 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-800/80 transition-all hover:bg-cyan-100 dark:hover:bg-cyan-950 hover:text-cyan-700 dark:hover:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 cursor-pointer duration-300"
-          >
-            <span>Solicitar Diagnóstico</span>
-            <ArrowUpRight className="ml-1.5 h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
         </div>
 
@@ -145,23 +131,6 @@ export default function Header({ activeSection, setActiveSection, isDark, onTogg
                 </button>
               );
             })}
-            
-            <hr className="border-zinc-200 dark:border-zinc-900 my-2" />
-
-            <div className="flex flex-col gap-3 py-2">
-              <div className="flex items-center gap-1.5 font-mono text-[9px] tracking-wider text-zinc-500 uppercase px-4">
-                <Shield className="w-3.5 h-3.5 text-cyan-500" />
-                Certificado de confidencialidad activa
-              </div>
-              <button
-                onClick={() => handleNavClick('contacto')}
-                className="w-full justify-center inline-flex items-center rounded bg-gradient-to-r from-cyan-600 to-blue-700 py-3 text-xs font-semibold uppercase tracking-wider text-white hover:from-cyan-500 hover:to-blue-600 cursor-pointer"
-                id="mobile-cta-diagnostic"
-              >
-                <span>Solicitar Diagnóstico Estratégico</span>
-                <ArrowUpRight className="ml-1.5 h-4 w-4" />
-              </button>
-            </div>
           </div>
         </div>
       )}

@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import * as Icons from 'lucide-react';
 import { SERVICES } from '../data';
+import chartsImg from '../assets/images/charts.jpg';
 
 interface ServicesDetailProps {
   initialServiceId?: string;
@@ -42,17 +43,29 @@ export default function ServicesDetail({ initialServiceId = 'inteligencia-estrat
 
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         
-        {/* Header Title */}
-        <div className="max-w-3xl mb-16 border-b border-zinc-200/50 dark:border-zinc-900 pb-10">
-          <span className="font-mono text-[10px] tracking-widest text-cyan-600 dark:text-cyan-400 uppercase font-semibold">
-            Ingeniería de percepción aplicada
-          </span>
-          <h2 className="font-display font-medium text-3xl sm:text-4xl text-zinc-950 dark:text-white mt-4">
-            Nuestros Sistemas Corporativos y de Estado
-          </h2>
-          <p className="text-zinc-650 dark:text-zinc-500 text-sm mt-3 font-sans transition-colors">
-            Módulos técnicos estandarizados diseñados para aislar vulnerabilidades, controlar la pauta publicitaria y consolidar de manera irrefutable su influencia estratégica.
-          </p>
+        {/* Header Title split grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-b border-zinc-200/50 dark:border-zinc-900 pb-10 mb-16">
+          <div className="lg:col-span-7">
+            <span className="font-mono text-[10px] tracking-widest text-cyan-600 dark:text-cyan-400 uppercase font-semibold">
+              Ingeniería de percepción aplicada
+            </span>
+            <h2 className="font-display font-medium text-3xl sm:text-4xl text-zinc-950 dark:text-white mt-4">
+              Nuestros Sistemas Corporativos y de Estado
+            </h2>
+            <p className="text-zinc-650 dark:text-zinc-500 text-sm mt-3 font-sans transition-colors">
+              Módulos técnicos estandarizados diseñados para aislar vulnerabilidades, controlar la pauta publicitaria y consolidar de manera irrefutable su influencia estratégica.
+            </p>
+          </div>
+          <div className="lg:col-span-5 relative select-none w-full h-full flex items-center justify-end">
+            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg">
+              <img 
+                src={chartsImg} 
+                alt="Gráficos y Métricas Operativas" 
+                className="w-full h-full object-cover object-center opacity-70 dark:opacity-80 transition-opacity duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-white via-white/20 to-transparent dark:from-[#030303] dark:via-[#030303]/25 dark:to-transparent transition-colors duration-500" />
+            </div>
+          </div>
         </div>
 
         {/* Cockpit Interactivo Layout */}
