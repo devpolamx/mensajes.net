@@ -3,14 +3,41 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { INSIGHTS } from '../data';
 import { InsightArticle } from '../types';
 import { Calendar, User, Clock, ArrowLeft, ArrowUpRight, Share2, AlertCircle, Copy, Check } from 'lucide-react';
+import insightsImg from '../assets/images/insights.jpg';
 
 export default function InsightsSection() {
   const [selectedArticle, setSelectedArticle] = useState<InsightArticle | null>(null);
   const [copiedLink, setCopiedLink] = useState(false);
+
+  const parallaxRef1 = useRef<HTMLDivElement>(null);
+  const parallaxRef2 = useRef<HTMLDivElement>(null);
+  const parallaxRef3 = useRef<HTMLDivElement>(null);
+  const parallaxRef4 = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      if (parallaxRef1.current) {
+        parallaxRef1.current.style.transform = `translateY(${scrolled * 0.12}px)`;
+      }
+      if (parallaxRef2.current) {
+        parallaxRef2.current.style.transform = `translateY(${scrolled * 0.22}px)`;
+      }
+      if (parallaxRef3.current) {
+        parallaxRef3.current.style.transform = `translateY(${scrolled * 0.06}px)`;
+      }
+      if (parallaxRef4.current) {
+        parallaxRef4.current.style.transform = `translateY(${scrolled * 0.08}px)`;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [selectedArticle]);
 
   const handleCopyLink = (slug: string) => {
     navigator.clipboard.writeText(`https://mensajes.net/insights/${slug}`);
@@ -20,12 +47,45 @@ export default function InsightsSection() {
 
   if (selectedArticle) {
     return (
-      <section 
+      <section
         id="essay-full-reader-module"
-        className="bg-transparent py-16 lg:py-24 transition-colors duration-500"
+        className="bg-transparent py-16 lg:py-24 relative overflow-hidden transition-colors duration-500"
       >
+        {/* Parallax Background Elements */}
+        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none select-none">
+          {/* Parallax Background Image */}
+          <div
+            ref={parallaxRef4}
+            className="absolute inset-0 -z-20 opacity-[0.04] dark:opacity-[0.07] bg-cover bg-center bg-no-repeat pointer-events-none select-none transition-opacity duration-500 will-change-transform scale-105"
+            style={{
+              backgroundImage: `url(${insightsImg})`,
+              filter: 'grayscale(100%) contrast(120%)',
+              maskImage: 'radial-gradient(ellipse 75% 75% at 50% 50%, #000 30%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 75% 75% at 50% 50%, #000 30%, transparent 100%)'
+            }}
+          />
+          {/* Parallax Orb 1 */}
+          <div
+            ref={parallaxRef1}
+            className="absolute -top-20 left-[10%] h-[350px] w-[350px] rounded-full bg-cyan-500/10 dark:bg-cyan-900/5 blur-[120px] will-change-transform"
+          />
+          {/* Parallax Orb 2 */}
+          <div
+            ref={parallaxRef2}
+            className="absolute top-[40%] right-[5%] h-[400px] w-[400px] rounded-full bg-blue-600/10 dark:bg-indigo-950/10 blur-[140px] will-change-transform"
+          />
+          {/* Parallax Grid Pattern */}
+          <div
+            ref={parallaxRef3}
+            className="absolute inset-0 opacity-10 dark:opacity-20 bg-[radial-gradient(#00bcd433_1px,transparent_1px)] bg-[size:3rem_3rem] will-change-transform"
+            style={{
+              maskImage: 'radial-gradient(ellipse 60% 60% at 50% 50%, #000 60%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 60% 60% at 50% 50%, #000 60%, transparent 100%)'
+            }}
+          />
+        </div>
         <div className="mx-auto max-w-4xl px-6 sm:px-8">
-          
+
           {/* Back button */}
           <button
             id="btn-back-to-insights-grid"
@@ -38,14 +98,14 @@ export default function InsightsSection() {
 
           {/* Full Article Content Frame */}
           <article className="prose prose-zinc dark:prose-invert max-w-none text-zinc-700 dark:text-zinc-300 transition-colors">
-            
+
             {/* Header elements */}
             <header className="border-b border-zinc-200/50 dark:border-zinc-900 pb-8 mb-10">
               <span className="font-mono text-[9px] tracking-widest text-cyan-650 dark:text-cyan-500 uppercase font-bold bg-cyan-50/50 dark:bg-cyan-950/20 px-2.5 py-1 rounded border border-cyan-200 dark:border-cyan-800/25">
                 {selectedArticle.category}
               </span>
-              
-              <h1 
+
+              <h1
                 id={`article-reader-headline-${selectedArticle.id}`}
                 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-zinc-950 dark:text-white mt-6 tracking-tight leading-tight"
               >
@@ -77,7 +137,7 @@ export default function InsightsSection() {
                   Contenido estratégico confidencial. Distribución autorizada Mensajes.net
                 </span>
               </div>
-              <button 
+              <button
                 onClick={() => handleCopyLink(selectedArticle.slug)}
                 className="text-zinc-550 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-900"
                 title="Copiar URL para SEO"
@@ -122,7 +182,7 @@ export default function InsightsSection() {
               </span>
               <div className="flex flex-wrap gap-2">
                 {selectedArticle.seoKeywords.map((kw, index) => (
-                  <span 
+                  <span
                     key={index}
                     className="text-[10px] font-mono text-cyan-600 dark:text-cyan-400 bg-zinc-50/50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-900 px-2 py-1 rounded"
                   >
@@ -139,18 +199,51 @@ export default function InsightsSection() {
   }
 
   return (
-    <section 
+    <section
       id="insights-tactic-index-module"
-      className="bg-transparent py-20 lg:py-28 relative transition-colors duration-500"
+      className="bg-transparent py-20 lg:py-28 relative overflow-hidden transition-colors duration-500"
     >
+      {/* Parallax Background Elements */}
+      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none select-none">
+        {/* Parallax Background Image */}
+        <div
+          ref={parallaxRef4}
+          className="absolute inset-0 -z-20 opacity-[0.04] dark:opacity-[0.07] bg-cover bg-center bg-no-repeat pointer-events-none select-none transition-opacity duration-500 will-change-transform scale-105"
+          style={{
+            backgroundImage: `url(${insightsImg})`,
+            filter: 'grayscale(100%) contrast(120%)',
+            maskImage: 'radial-gradient(ellipse 75% 75% at 50% 50%, #000 30%, transparent 100%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 75% 75% at 50% 50%, #000 30%, transparent 100%)'
+          }}
+        />
+        {/* Parallax Orb 1 */}
+        <div
+          ref={parallaxRef1}
+          className="absolute -top-20 left-[10%] h-[350px] w-[350px] rounded-full bg-cyan-500/10 dark:bg-cyan-900/5 blur-[120px] will-change-transform"
+        />
+        {/* Parallax Orb 2 */}
+        <div
+          ref={parallaxRef2}
+          className="absolute top-[40%] right-[5%] h-[400px] w-[400px] rounded-full bg-blue-600/10 dark:bg-indigo-950/10 blur-[140px] will-change-transform"
+        />
+        {/* Parallax Grid Pattern */}
+        <div
+          ref={parallaxRef3}
+          className="absolute inset-0 opacity-10 dark:opacity-20 bg-[radial-gradient(#00bcd433_1px,transparent_1px)] bg-[size:3rem_3rem] will-change-transform"
+          style={{
+            maskImage: 'radial-gradient(ellipse 60% 60% at 50% 50%, #000 60%, transparent 100%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 60% 60% at 50% 50%, #000 60%, transparent 100%)'
+          }}
+        />
+      </div>
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
-        
+
         {/* Header Block Title */}
         <div className="max-w-3xl mb-16 border-b border-zinc-200/50 dark:border-zinc-900 pb-10">
           <span className="font-mono text-[10px] tracking-widest text-cyan-650 dark:text-cyan-400 uppercase font-semibold">
             Visión Geopolítica e Opinión Pública
           </span>
-          <h1 
+          <h1
             id="insights-headline"
             className="font-display font-medium text-3xl sm:text-4xl text-zinc-950 dark:text-white mt-4"
           >
@@ -197,20 +290,6 @@ export default function InsightsSection() {
             </div>
           ))}
         </div>
-
-        {/* Analytical methodology disclaimer banner */}
-        <div id="insights-security-foot-alert" className="mt-16 p-6 rounded bg-white/70 dark:bg-zinc-950/60 border border-zinc-202 dark:border-zinc-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4 backdrop-blur-sm shadow-sm transition-colors duration-500">
-          <div className="flex items-center gap-3">
-            <Clock className="w-5 h-5 text-zinc-500 shrink-0" />
-            <p className="text-xs text-zinc-650 dark:text-zinc-400 leading-normal font-sans">
-              Monitoreamos constantemente el flujo de percepciones globales. Estos documentos representan el conocimiento consolidado de nuestros comités de inteligencia corporativa.
-            </p>
-          </div>
-          <span className="font-mono text-[9px] tracking-wider text-cyan-600 dark:text-cyan-500 uppercase shrink-0 font-bold">
-            Actualizado Semanalmente
-          </span>
-        </div>
-
       </div>
     </section>
   );

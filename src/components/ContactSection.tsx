@@ -122,6 +122,16 @@ export default function ContactSection() {
                 <Landmark className="w-4.5 h-4.5 text-cyan-500 shrink-0" />
                 <span>Oficinas Ejecutivas, CDMX - Madrid - DC</span>
               </div>
+
+              <a
+                href="/aviso-de-privacidad.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-zinc-700 dark:text-zinc-400 p-3 rounded bg-white/60 dark:bg-zinc-950/40 border border-zinc-200/50 dark:border-zinc-900/40 hover:border-cyan-500/30 dark:hover:border-cyan-500/20 backdrop-blur-sm shadow-sm transition-all duration-300 cursor-pointer"
+              >
+                <Shield className="w-4.5 h-4.5 text-cyan-500 shrink-0" />
+                <span className="hover:underline">Aviso de Privacidad</span>
+              </a>
             </div>
           </div>
 

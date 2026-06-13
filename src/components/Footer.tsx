@@ -110,6 +110,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           </div>
 
           <div className="flex items-center gap-4">
+            {/* TODO: Add link to privacy policy */}
             <a
               href="/aviso-de-privacidad.pdf"
               target="_blank"
@@ -117,6 +118,11 @@ export default function Footer({ onNavigate }: FooterProps) {
               className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-200 cursor-pointer"
             >
               Aviso de Privacidad
+            </a>
+            {/* Designed by */}
+            <span className="text-zinc-500 dark:text-zinc-600">Designed by</span>
+            <a href="https://www.iosoluciones.com.mx" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-200 cursor-pointer">
+              IOSoluciones
             </a>
           </div>
         </div>
