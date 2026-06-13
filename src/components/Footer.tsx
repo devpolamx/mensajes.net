@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { ShieldCheck, Mail, Phone, Lock, Terminal } from 'lucide-react';
+import { ShieldCheck, Mail, Phone, Lock, Terminal, Linkedin, Instagram, Facebook } from 'lucide-react';
 import BrandLogo from './BrandLogo';
 
 interface FooterProps {
@@ -15,24 +15,51 @@ export default function Footer({ onNavigate }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer 
+    <footer
       id="executive-footer-panel"
       className="bg-white dark:bg-black border-t border-zinc-205 dark:border-zinc-900 py-16 text-zinc-650 dark:text-zinc-400 font-sans transition-colors duration-500"
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
-        
+
         {/* Main upper split */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start pb-12 border-b border-zinc-205 dark:border-zinc-900">
-          
+
           {/* Brand block left */}
           <div className="md:col-span-5 space-y-4">
             <BrandLogo size={38} showText={true} />
             <p className="text-xs text-zinc-600 dark:text-zinc-500 leading-relaxed max-w-sm mt-3">
               Firma reservada de inteligencia comunicativa corporativa, blindaje reputacional, marketing político de poder e ingeniería algorítmica de precisión.
             </p>
-            <div className="flex items-center gap-1.5 text-[10px] font-mono mt-4 text-emerald-600 dark:text-emerald-500 bg-emerald-58/50 dark:bg-emerald-950/20 border border-emerald-250 dark:border-emerald-900/30 px-3 py-1 rounded w-fit select-none">
-              <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-500" />
-              <span>Conexión de canal auditada</span>
+
+            {/* Social icons */}
+            <div className="flex items-center gap-3 pt-2">
+              <a
+                href="https://www.linkedin.com/company/mensajes-net"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="p-2 rounded border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-500 hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500/50 transition-colors duration-300"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.instagram.com/mensajes.net"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="p-2 rounded border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-500 hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500/50 transition-colors duration-300"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.facebook.com/mensajes.net"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="p-2 rounded border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-500 hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500/50 transition-colors duration-300"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
@@ -80,17 +107,17 @@ export default function Footer({ onNavigate }: FooterProps) {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[10px] text-zinc-500 dark:text-zinc-600">
           <div className="flex items-center gap-4 flex-wrap">
             <span>&copy; {currentYear} mensajes.net. Todos los derechos reservados.</span>
-            <span className="hidden sm:inline border-r border-zinc-200 dark:border-zinc-800 h-3.5" />
-            <span className="flex items-center gap-1">
-              <Terminal className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-500/80" />
-              SSL-v3_256bit
-            </span>
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="hover:text-zinc-800 dark:hover:text-zinc-400 cursor-pointer">Protocolo de Confidencialidad</span>
-            <span>-</span>
-            <span className="hover:text-zinc-800 dark:hover:text-zinc-400 cursor-pointer">Seguridad de Datos</span>
+            <a
+              href="/aviso-de-privacidad.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-200 cursor-pointer"
+            >
+              Aviso de Privacidad
+            </a>
           </div>
         </div>
 

@@ -14,6 +14,7 @@ import InsightsSection from './components/InsightsSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import { Terminal, Shield, Eye, FileCode, CheckCircle2 } from 'lucide-react';
+import { SEO_METADATA } from './data';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('inicio');
@@ -27,6 +28,16 @@ export default function App() {
     }
     return true;
   });
+
+  // Update document title and meta description per active section
+  useEffect(() => {
+    const key = activeTab as keyof typeof SEO_METADATA;
+    const meta = SEO_METADATA[key] ?? SEO_METADATA.default;
+    document.title = meta.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', meta.description);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', meta.title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', meta.description);
+  }, [activeTab]);
 
   useEffect(() => {
     const root = document.documentElement;

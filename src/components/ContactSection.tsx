@@ -31,7 +31,7 @@ export default function ContactSection() {
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    
+
     // Simulate high-security transmission delay
     setTimeout(() => {
       setLoading(false);
@@ -50,7 +50,7 @@ export default function ContactSection() {
   ];
 
   return (
-    <section 
+    <section
       id="contact-form-section-wrapper"
       className="bg-transparent py-20 lg:py-28 relative transition-colors duration-500"
     >
@@ -80,13 +80,13 @@ export default function ContactSection() {
       </a>
 
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
-        
+
         {/* Header Title Section */}
         <div className="max-w-3xl mb-16 border-b border-zinc-200/50 dark:border-zinc-900 pb-10">
           <span className="font-mono text-[10px] tracking-widest text-cyan-650 dark:text-cyan-400 uppercase font-semibold">
             Canal de acceso reservado
           </span>
-          <h1 
+          <h1
             id="contacto-headline"
             className="font-display font-medium text-3xl sm:text-4xl text-zinc-950 dark:text-white mt-4"
           >
@@ -99,28 +99,15 @@ export default function ContactSection() {
 
         {/* Binary Form / Info Grid */}
         <div id="contact-split-grid" className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* Left Panel: High Security Indicators */}
           <div className="lg:col-span-4 space-y-8">
-            <div className="rounded bg-white/70 dark:bg-zinc-950 p-6 border border-zinc-200 dark:border-zinc-900/80 backdrop-blur-sm shadow-sm transition-all duration-300">
-              <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400 font-mono text-[10px] font-bold uppercase tracking-widest mb-4">
-                <Shield className="w-4.5 h-4.5" />
-                <span>Protocolo de Protección</span>
-              </div>
-              
-              <h4 className="font-display font-bold text-sm text-zinc-900 dark:text-zinc-200">
-                Reserva Legal Certificada
-              </h4>
-              <p className="text-xs text-zinc-650 dark:text-zinc-400 mt-2 font-sans leading-relaxed transition-colors">
-                Cada consulta, formulario de contacto e información intercambiada queda amparada bajo acuerdos automáticos simétricos de no divulgación industrial y estatal.
-              </p>
-            </div>
 
             <div className="space-y-4 text-xs font-mono">
               <span className="text-[9px] text-zinc-500 dark:text-zinc-600 tracking-wider uppercase font-bold block">
                 COORDENADAS DE ACCESO
               </span>
-              
+
               <div className="flex items-center gap-3 text-zinc-700 dark:text-zinc-400 p-3 rounded bg-white/60 dark:bg-zinc-950/40 border border-zinc-200/50 dark:border-zinc-900/40 backdrop-blur-sm shadow-sm">
                 <Phone className="w-4.5 h-4.5 text-cyan-500 shrink-0" />
                 <span>+52 (55) 8000 9500 (Latam Central)</span>
@@ -136,27 +123,16 @@ export default function ContactSection() {
                 <span>Oficinas Ejecutivas, CDMX - Madrid - DC</span>
               </div>
             </div>
-
-            {/* Verification SSL Card */}
-            <div className="p-4 rounded border border-zinc-200 dark:border-zinc-900 bg-[#fafafa]/50 dark:bg-zinc-950/30 flex items-center gap-3">
-              <Lock className="w-5 h-5 text-emerald-600 dark:text-emerald-500 shrink-0 animate-pulse" />
-              <div>
-                <p className="font-mono text-[9px] text-emerald-600 dark:text-emerald-500 font-bold uppercase tracking-wider">
-                  ENCRIPTACIÓN 256-BIT SSL DISPONIBLE
-                </p>
-                <p className="text-[10px] text-zinc-550 dark:text-zinc-500 font-sans mt-0.5">Su conexión es privada e individual</p>
-              </div>
-            </div>
           </div>
 
           {/* Right Panel: The Interactive form */}
           <div className="lg:col-span-8 bg-white/75 dark:bg-zinc-950/90 border border-zinc-201 dark:border-zinc-900 rounded p-8 sm:p-12 relative overflow-hidden backdrop-blur-sm shadow-sm transition-all duration-500">
-            
+
             {/* Top border decor */}
             <div className="absolute top-0 right-0 w-32 h-1 bg-gradient-to-l from-cyan-500 to-blue-600" />
 
             {!formSubmitted ? (
-              <form 
+              <form
                 id="strategic-contact-form"
                 onSubmit={handleFormSubmit}
                 className="space-y-6"
@@ -263,8 +239,8 @@ export default function ContactSection() {
                     className="w-full bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-850 focus:border-cyan-500 rounded py-3.5 px-4 text-sm text-zinc-900 dark:text-white focus:outline-none transition-colors cursor-pointer"
                   >
                     {objectives.map((opt) => (
-                      <option 
-                        key={opt.value} 
+                      <option
+                        key={opt.value}
                         value={opt.value}
                         className="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-300 font-sans py-2"
                       >
@@ -323,7 +299,7 @@ export default function ContactSection() {
               </form>
             ) : (
               /* High status receipt page on submit */
-              <div 
+              <div
                 id="high-security-form-receipt"
                 className="text-center py-12 animate-in fade-in zoom-in-95 duration-500"
               >
@@ -334,7 +310,7 @@ export default function ContactSection() {
                 <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-zinc-900 dark:text-white">
                   Petición Recibida Bajo Reserva
                 </h3>
-                
+
                 <h4 className="font-mono text-[9px] text-cyan-600 dark:text-cyan-400 font-bold uppercase tracking-widest mt-2">
                   PROTOCOLO ESTADO: ACTIVO / EXPEDIENTE_0092B
                 </h4>

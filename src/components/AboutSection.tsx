@@ -114,6 +114,73 @@ export default function AboutSection() {
 
         </div>
 
+        {/* Vision, Mission & Values Block */}
+        <div id="vision-mision-valores" className="mt-24 border-t border-zinc-200/50 dark:border-zinc-900 pt-20">
+          <div className="text-center mb-14">
+            <span className="font-mono text-[9px] tracking-widest text-cyan-600 dark:text-cyan-500 uppercase font-bold">
+              Identidad Institucional
+            </span>
+            <h2 className="font-display font-medium text-2xl sm:text-3xl text-zinc-950 dark:text-white mt-1">
+              Propósito, Dirección y Carácter
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
+            {/* Visión */}
+            <div className="bg-white/70 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-900 rounded p-8 backdrop-blur-sm shadow-sm transition-all duration-350">
+              <div className="flex items-center gap-2 mb-5">
+                <Icons.Eye className="w-4 h-4 text-cyan-500" />
+                <span className="font-mono text-[10px] tracking-widest text-cyan-600 dark:text-cyan-400 uppercase font-semibold">
+                  Visión
+                </span>
+              </div>
+              <p className="font-sans text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">
+                Convertirnos en una firma líder en inteligencia estratégica de comunicación, posicionamiento político y construcción de influencia pública en México y Latinoamérica.
+              </p>
+            </div>
+
+            {/* Misión */}
+            <div className="bg-white/70 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-900 rounded p-8 backdrop-blur-sm shadow-sm transition-all duration-350">
+              <div className="flex items-center gap-2 mb-5">
+                <Icons.Target className="w-4 h-4 text-cyan-500" />
+                <span className="font-mono text-[10px] tracking-widest text-cyan-600 dark:text-cyan-400 uppercase font-semibold">
+                  Misión
+                </span>
+              </div>
+              <p className="font-sans text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">
+                Diseñar sistemas de comunicación estratégica que permitan a empresas, gobiernos, campañas y figuras públicas construir percepción, posicionamiento e influencia medible mediante inteligencia, narrativa y análisis de comportamiento.
+              </p>
+            </div>
+          </div>
+
+          {/* Valores como chips */}
+          <div className="bg-white/70 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-900 rounded p-8 backdrop-blur-sm shadow-sm">
+            <div className="flex items-center gap-2 mb-6">
+              <Icons.Gem className="w-4 h-4 text-cyan-500" />
+              <span className="font-mono text-[10px] tracking-widest text-cyan-600 dark:text-cyan-400 uppercase font-semibold">
+                Valores
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              {[
+                'Confidencialidad',
+                'Inteligencia estratégica',
+                'Precisión',
+                'Innovación',
+                'Ética',
+                'Resultados',
+              ].map((valor) => (
+                <span
+                  key={valor}
+                  className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-mono font-medium bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-cyan-500/50 hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors duration-300"
+                >
+                  {valor}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* 4 Foundational Values Grid */}
         <div id="values-grid-wrapper" className="mt-24">
           <div className="text-center mb-16">

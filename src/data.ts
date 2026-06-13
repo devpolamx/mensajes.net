@@ -11,7 +11,7 @@ export const BRAND_INFO = {
   vision: 'Inteligencia estratégica para construir influencia.',
   subtext: 'Diseñamos sistemas de posicionamiento, percepción y comunicación estratégica para empresas, gobiernos y campañas políticas.',
   differentiator: {
-    title: 'No somos una agencia tradicional.',
+    title: 'Inteligencia Estratégica.',
     description: 'Las agencias tradicionales se enfocan en impresiones y me gustas efímeros. En Mensajes.net operamos a nivel de arquitectura de la percepción y sistemas de influencia. Analizamos datos vectorizados, diseñamos narrativas blindadas de alta precisión y ejecutamos distribución pautada inteligente para asegurar que su mensaje domine la mente de los tomadores de decisiones clave.'
   }
 };

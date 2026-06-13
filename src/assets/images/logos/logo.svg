@@ -1,0 +1,47 @@
+<svg
+  width="512"
+  height="512"
+  viewBox="0 0 100 100"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- Outer Ring — cyan dashed -->
+  <circle cx="50" cy="50" r="42"
+    stroke="#06b6d4"
+    stroke-width="1.5"
+    stroke-dasharray="4 8 20 6"
+    opacity="0.85"
+  />
+
+  <!-- Second Ring — petrol blue -->
+  <circle cx="50" cy="50" r="32"
+    stroke="#014f86"
+    stroke-width="2.5"
+    stroke-dasharray="45 15 30 10"
+  />
+
+  <!-- Third Ring — cyan dashed -->
+  <circle cx="50" cy="50" r="24"
+    stroke="#06b6d4"
+    stroke-width="1.5"
+    stroke-dasharray="6 3 18 4"
+    opacity="0.9"
+  />
+
+  <!-- Inner Ring — deep petrol solid -->
+  <circle cx="50" cy="50" r="16"
+    stroke="#012a4a"
+    stroke-width="3"
+  />
+
+  <!-- Center Core — solid cyan -->
+  <circle cx="50" cy="50" r="8"
+    fill="#06b6d4"
+  />
+
+  <!-- Axis Lines -->
+  <line x1="50" y1="12" x2="50" y2="20" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" />
+  <line x1="50" y1="80" x2="50" y2="88" stroke="#014f86" stroke-width="2" stroke-linecap="round" />
+  <line x1="12" y1="50" x2="20" y2="50" stroke="#014f86" stroke-width="2" stroke-linecap="round" />
+  <line x1="80" y1="50" x2="88" y2="50" stroke="#06b6d4"  stroke-width="2" stroke-linecap="round" />
+</svg>

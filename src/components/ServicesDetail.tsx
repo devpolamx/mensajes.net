@@ -34,7 +34,7 @@ export default function ServicesDetail({ initialServiceId = 'inteligencia-estrat
   };
 
   return (
-    <section 
+    <section
       id="services-cockpit-interactive-module"
       className="bg-transparent py-20 lg:py-28 relative transition-colors duration-500"
     >
@@ -42,7 +42,7 @@ export default function ServicesDetail({ initialServiceId = 'inteligencia-estrat
       <div className="absolute top-10 right-0 -z-10 h-[450px] w-[450px] rounded-full bg-cyan-950/10 blur-[130px] pointer-events-none select-none" />
 
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
-        
+
         {/* Header Title split grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-b border-zinc-200/50 dark:border-zinc-900 pb-10 mb-16">
           <div className="lg:col-span-7">
@@ -58,9 +58,9 @@ export default function ServicesDetail({ initialServiceId = 'inteligencia-estrat
           </div>
           <div className="lg:col-span-5 relative select-none w-full h-full flex items-center justify-end">
             <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg">
-              <img 
-                src={chartsImg} 
-                alt="Gráficos y Métricas Operativas" 
+              <img
+                src={chartsImg}
+                alt="Gráficos y Métricas Operativas"
                 className="w-full h-full object-cover object-center opacity-70 dark:opacity-80 transition-opacity duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-white via-white/20 to-transparent dark:from-[#030303] dark:via-[#030303]/25 dark:to-transparent transition-colors duration-500" />
@@ -70,7 +70,7 @@ export default function ServicesDetail({ initialServiceId = 'inteligencia-estrat
 
         {/* Cockpit Interactivo Layout */}
         <div id="services-grid-cockpit" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
+
           {/* Left Panel Sidebar Navigation */}
           <div className="lg:col-span-4 space-y-2 lg:sticky lg:top-24">
             <span className="font-mono text-[9px] tracking-widest text-zinc-500 dark:text-zinc-600 uppercase font-bold block mb-4 px-3">
@@ -84,11 +84,10 @@ export default function ServicesDetail({ initialServiceId = 'inteligencia-estrat
                   key={srv.id}
                   id={`btn-service-tab-${srv.id}`}
                   onClick={() => setSelectedId(srv.id)}
-                  className={`w-full text-left py-3 px-4 rounded text-xs sm:text-sm font-medium transition-all duration-300 flex items-center justify-between border ${
-                    isSelected 
-                      ? 'bg-cyan-50/50 dark:bg-cyan-950/30 text-cyan-600 dark:text-cyan-300 border-cyan-250 dark:border-cyan-800/80 box-glow pl-6 font-semibold' 
-                      : 'text-zinc-600 dark:text-zinc-400 bg-white/70 dark:bg-zinc-950/40 border-zinc-200 dark:border-zinc-900/60 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-50 dark:hover:bg-zinc-900/30 hover:border-zinc-300 dark:hover:border-zinc-800'
-                  }`}
+                  className={`w-full text-left py-3 px-4 rounded text-xs sm:text-sm font-medium transition-all duration-300 flex items-center justify-between border ${isSelected
+                    ? 'bg-cyan-50/50 dark:bg-cyan-950/30 text-cyan-600 dark:text-cyan-300 border-cyan-250 dark:border-cyan-800/80 box-glow pl-6 font-semibold'
+                    : 'text-zinc-600 dark:text-zinc-400 bg-white/70 dark:bg-zinc-950/40 border-zinc-200 dark:border-zinc-900/60 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-50 dark:hover:bg-zinc-900/30 hover:border-zinc-300 dark:hover:border-zinc-800'
+                    }`}
                 >
                   <div className="flex items-center gap-3">
                     <span className={isSelected ? 'text-cyan-600 dark:text-cyan-400' : 'text-zinc-500 dark:text-zinc-600'}>
@@ -103,14 +102,14 @@ export default function ServicesDetail({ initialServiceId = 'inteligencia-estrat
           </div>
 
           {/* Right Panel Main Details Card */}
-          <div 
+          <div
             id="service-detail-display-panel"
             className="lg:col-span-8 bg-white/75 dark:bg-zinc-950/80 border border-zinc-205 dark:border-zinc-900 rounded p-8 sm:p-12 relative overflow-hidden transition-all duration-500 animate-in fade-in backdrop-blur-sm shadow-sm"
             key={activeService.id} // Forces re-render with animation when selection changes
           >
             {/* Subtle top edge lines */}
             <div className="absolute top-0 left-0 w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600" />
-            
+
             {/* Static identifier index */}
             <span className="absolute top-6 right-8 font-mono text-[10px] text-zinc-550 dark:text-zinc-500 font-bold uppercase tracking-wider bg-zinc-100 dark:bg-zinc-900 px-2 py-0.5 rounded border border-zinc-250 dark:border-zinc-800">
               MÓDULO DE SERVICIO
@@ -133,7 +132,7 @@ export default function ServicesDetail({ initialServiceId = 'inteligencia-estrat
 
             {/* Depth analysis */}
             <div className="space-y-8">
-              
+
               {/* Core Description */}
               <div>
                 <h4 className="font-mono text-[9px] tracking-widest text-cyan-600 dark:text-cyan-500 uppercase font-semibold">
@@ -141,17 +140,6 @@ export default function ServicesDetail({ initialServiceId = 'inteligencia-estrat
                 </h4>
                 <p className="mt-2 text-xs sm:text-sm text-zinc-750 dark:text-zinc-300 leading-relaxed font-sans">
                   {activeService.fullDescription}
-                </p>
-              </div>
-
-              {/* Problem Solved */}
-              <div className="bg-red-50/50 dark:bg-red-955/20 border border-red-150 dark:border-red-950/25 rounded p-6">
-                <div className="flex items-center gap-2 text-red-650 dark:text-red-400 mb-2 font-mono text-[10px] font-bold uppercase tracking-wider">
-                  <Icons.AlertOctagon className="w-4 h-4" />
-                  <span>Problema Semi-Crítico que Resuelve</span>
-                </div>
-                <p className="text-xs sm:text-sm text-red-800 dark:text-red-205/90 leading-relaxed font-sans font-medium">
-                  {activeService.problem}
                 </p>
               </div>
 
@@ -177,12 +165,11 @@ export default function ServicesDetail({ initialServiceId = 'inteligencia-estrat
             {/* Form actions cta */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-3">
-                <Icons.Lock className="w-4 h-4 text-zinc-400 dark:text-zinc-600" />
                 <span className="font-mono text-[10px] text-zinc-550 dark:text-zinc-500 tracking-wider uppercase">
-                  Auditoría preliminar asegurada bajo NDA
+                  &nbsp;
                 </span>
               </div>
-              
+
               <button
                 id="btn-service-cta-speak"
                 onClick={onContactStrategic}

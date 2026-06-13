@@ -6,7 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, ShieldCheck, Database, Landmark, Briefcase, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 //import heroDeaner from '../assets/images/hero-deaner.jpg';
-import heroForerunner from '../assets/images/hero-forerunner.jpg';
+import heroStudioMeeting from '../assets/images/hero-studio-meeting.jpg';
 //import herovitality from '../assets/images/hero-vitaly-gariev.jpg';
 import herobusinessintelligence from '../assets/images/hero-business-intellisense.jpg';
 interface HeroProps {
@@ -53,7 +53,7 @@ export default function Hero({ onLearnMoreServices, onRequestDiagnostic }: HeroP
         <div
           className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-20 dark:opacity-25 scale-100' : 'opacity-0 scale-105'
             }`}
-          style={{ backgroundImage: `url(${heroForerunner})` }}
+          style={{ backgroundImage: `url(${heroStudioMeeting})` }}
         />
         {/* Slide 2 */}
         <div
