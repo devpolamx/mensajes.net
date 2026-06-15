@@ -1,7 +1,7 @@
-# www.mensajes.net Robots File
+# www.mensajesnet.com Robots File
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /private-war-room/
 
-Sitemap: https://mensajes.net/sitemap.xml
+Sitemap: https://mensajesnet.com/sitemap.xml

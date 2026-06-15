@@ -246,41 +246,41 @@ export const SEO_METADATA = {
 export const SITEMAP_XML = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mensajes.net/</loc>
+    <loc>https://mensajesnet.com/</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mensajes.net/nosotros</loc>
+    <loc>https://mensajesnet.com/nosotros</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mensajes.net/servicios</loc>
+    <loc>https://mensajesnet.com/servicios</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mensajes.net/insights</loc>
+    <loc>https://mensajesnet.com/insights</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mensajes.net/contacto</loc>
+    <loc>https://mensajesnet.com/contacto</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 </urlset>`;
 
-export const ROBOTS_TXT = `# www.mensajes.net Robots File
+export const ROBOTS_TXT = `# www.mensajesnet.com Robots File
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /private-war-room/
 
-Sitemap: https://mensajes.net/sitemap.xml`;
+Sitemap: https://mensajesnet.com/sitemap.xml`;

@@ -40,7 +40,7 @@ export default function InsightsSection() {
   }, [selectedArticle]);
 
   const handleCopyLink = (slug: string) => {
-    navigator.clipboard.writeText(`https://mensajes.net/insights/${slug}`);
+    navigator.clipboard.writeText(`https://mensajesnet.com/insights/${slug}`);
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2000);
   };
@@ -80,7 +80,7 @@ export default function InsightsSection() {
             className="absolute inset-0 opacity-10 dark:opacity-20 bg-[radial-gradient(#00bcd433_1px,transparent_1px)] bg-[size:3rem_3rem] will-change-transform"
             style={{
               maskImage: 'radial-gradient(ellipse 60% 60% at 50% 50%, #000 60%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(ellipse 60% 60% at 50% 50%, #000 60%, transparent 100%)'
+              WebkitMaskImage: 'radial-gradient(ellipse 60% 60% at 50% 50%, #000 60%, ñtransparent 100%)'
             }}
           />
         </div>

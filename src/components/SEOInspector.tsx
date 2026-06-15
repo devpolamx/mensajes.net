@@ -59,10 +59,10 @@ const seoData = {
 
 <!-- Protocolo Open Graph de Percepción Facebook/LinkedIn -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://mensajes.net/" />
+<meta property="og:url" content="https://mensajesnet.com/" />
 <meta property="og:title" content="${SEO_METADATA.default.title}" />
 <meta property="og:description" content="${SEO_METADATA.default.description}" />
-<meta property="og:image" content="https://mensajes.net/og-image-mensajes-net.png" />
+<meta property="og:image" content="https://mensajesnet.com/og-image-mensajes-net.png" />
 
 <!-- Tarjetas X (anteriormente Twitter) de Red de Influencia -->
 <meta property="twitter:card" content="summary_large_image" />
